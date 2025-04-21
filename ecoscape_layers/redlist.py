@@ -30,7 +30,7 @@ class RedList:
 
         data: dict = res.json()
 
-        return data["result"]
+        return data
 
     def get_scientific_name(self, species_code: str) -> str:
         """Translates eBird codes to scientific names for use in Red List.
