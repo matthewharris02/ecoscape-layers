@@ -23,7 +23,7 @@ class RedList:
         :param url: the URL for the request.
         :return: response for the request.
         """
-        res = requests.get(url, params=self.redlist_params)
+        res = requests.get(url, headers=self.redlist_params)
 
         if res.status_code != 200:
             raise ValueError(f"Error {res.status_code} in Red List API request")
