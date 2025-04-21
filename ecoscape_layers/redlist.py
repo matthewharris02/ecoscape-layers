@@ -13,7 +13,7 @@ class RedList:
         Initializes a RedList object.
         API keys are required to access the IUCN Red List API and eBird API respectively; see the documentation for more information.
         """
-        self.redlist_params = {"token": redlist_key}
+        self.redlist_params = {"Authorization": redlist_key}
         self.ebird_key = ebird_key
 
     def get_from_redlist(self, url: str) -> dict:
