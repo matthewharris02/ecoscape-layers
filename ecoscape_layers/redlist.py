@@ -117,9 +117,10 @@ class RedList:
         for hab in habs:
             code = str(hab["code"])
 
+            # TODO: is this necessary? Codes seem to be x_x instea of xx.xx
             # some codes are in the format xx.xx.xx instead of xx.xx
             # we will truncate xx.xx.xx codes to xx.xx
-            code_sep = code.split(".")
+            code_sep = code.split("_")
 
             # check that code_sep len is not less than len of 2
             if len(code_sep) < 2:
