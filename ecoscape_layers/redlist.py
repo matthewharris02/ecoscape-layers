@@ -137,7 +137,7 @@ class RedList:
             code_sep = map(lambda num_str: num_str.zfill(2), code_sep)
 
             # Convert bool like strings to bools
-            hab["majorimportance"] = hab["majorimportance"] == "Yes"
+            hab["majorImportance"] = hab["majorImportance"] == "Yes"
             hab["suitability"] = hab["suitability"] == "Suitable"
 
             # create a map_code that is represented by an int
