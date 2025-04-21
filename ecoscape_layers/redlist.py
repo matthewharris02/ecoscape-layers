@@ -95,12 +95,23 @@ class RedList:
             sci_name = self.get_scientific_name(species_name)
         else:
             sci_name = species_name
+        # Split sci_name into genus and species
+        genus, species = sci_name.split()
 
-        url = f"https://apiv3.iucnredlist.org/api/v3/habitats/species/name/{sci_name}"
-        if region is not None:
-            url += f"/region/{region}"
-
-        habs = self.get_from_redlist(url)
+        url = f"https://api.iucnredlist.org/api/v4/taxa/scientific_name?genus_name={genus}&species_name={species}"
+        
+        # if region is not None:
+        #     url += f"/region/{region}"
+        assessments = self.get_from_redlist(url)["assessments"]
+        
+        # Get assessment code for latest global assessment for species
+        latest_assessment = [i for i in assessments if ((i["latest"] == True) & (i["scopes"][0]["code"] == '1'))][0]["assessment_id"]
+        
+        # Get habitats from latest global assessment for species
+        url = f"https://api.iucnredlist.org/api/v4/assessment/{latest_assessment}"
+        
+        habs = self.get_from_redlist(url)["habitats"]
+        
         res = {}
 
         for hab in habs:
