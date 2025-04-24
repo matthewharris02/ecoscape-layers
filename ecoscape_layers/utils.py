@@ -392,7 +392,7 @@ def get_current_habitat(
         if major_i is not None:
             replace_keywords("majorImportance", major_i)
         if suit_i is not None:
-            replace_keywords("suitable", suit_i)
+            replace_keywords("suitability", suit_i)
 
         # remove and duplicates due to overlap
         overrides = list(set(overrides))
