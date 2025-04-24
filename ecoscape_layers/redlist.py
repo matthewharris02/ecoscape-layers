@@ -70,7 +70,7 @@ class RedList:
         return sci_name
 
     def get_habitat_data(
-        self, species_name: str, region=None, ebird_code: bool = False
+        self, species_name: str, ebird_code: bool = False
     ) -> dict[int, dict[str, str | bool]]:
         """Gets habitat assessments for suitability for a given species.
         This also adds the associated landcover/terrain map's code to the API response,
@@ -79,7 +79,6 @@ class RedList:
 
         Args:
             species_name (str): scientific name of the species.
-            region (_type_, optional): a specific region to assess habitats in (see https://apiv3.iucnredlist.org/api/v3/docs#regions).. Defaults to None.
             ebird_code (bool, optional): If True, reads species_name as an eBird species_code and converts it to a scientific/iucn name. Defaults to False.
 
         Raises:
@@ -100,8 +99,6 @@ class RedList:
 
         url = f"https://api.iucnredlist.org/api/v4/taxa/scientific_name?genus_name={genus}&species_name={species}"
         
-        # if region is not None:
-        #     url += f"/region/{region}"
         assessments = self.get_from_redlist(url)["assessments"]
         
         # Get assessment code for latest global assessment for species
