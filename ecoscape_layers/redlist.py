@@ -70,7 +70,7 @@ class RedList:
         return sci_name
 
     def get_habitat_data(
-        self, species_name: str, ebird_code: bool = False
+        self, species_name: str, ebird_code: bool = True
     ) -> dict[int, dict[str, str | bool]]:
         """Gets habitat assessments for suitability for a given species.
         This also adds the associated landcover/terrain map's code to the API response,
@@ -79,7 +79,7 @@ class RedList:
 
         Args:
             species_name (str): scientific name of the species.
-            ebird_code (bool, optional): If True, reads species_name as an eBird species_code and converts it to a scientific/iucn name. Defaults to False.
+            ebird_code (bool, optional): If True, reads species_name as an eBird species_code and converts it to a scientific/iucn name. Defaults to True.
 
         Raises:
             ValueError: Errors when the code received from the IUCN Redlist is missing a period or data after a period.
